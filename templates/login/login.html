@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDUNET - Login</title>
+    <title>ATTENDIO - Login</title>
     <style>
         body {
             margin: 0;
@@ -71,12 +71,26 @@
         .login-box button:hover {
             background-color: #ddd;
         }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
 <div class="login-box">
-    <h1>EDUNET</h1>
+    <h1>ATTENDIO</h1>
     <h2>Login</h2>
     <form action="/login" method="POST">
         <label for="email">EMAIL</label>
@@ -87,6 +101,7 @@
 
         <button type="submit">Sign up</button>
     </form>
+    <a class="forgot-password" href="/recover-password">Ai uitat parola?</a>
 </div>
 
 </body>
