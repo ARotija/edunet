@@ -1,7 +1,44 @@
-# .gitignore
+# Byte-compiled / cache
 __pycache__/
-*.pyc
-instance/
+*.py[cod]
+*$py.class
+
+# Virtual environments
 .env
 venv/
 .env.*
+venv/
+env/
+.venv/
+
+# Environment & Flask settings
+.env
+.flaskenv
+instance/
+
+# Database file
+app.db
+*.sqlite3
+
+# Migrations cache (keep the scripts, ignore compiled)
+migrations/__pycache__/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and coverage
+*.log
+coverage.*
+htmlcov/
+
+# Distribution / packaging (if any)
+*.egg-info/
+dist/
+build/
