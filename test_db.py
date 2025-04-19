@@ -1,19 +1,33 @@
-from app import create_app
-from app.extensions import db
-from app.models import User  # o cualquier modelo que hayas creado
+from app import create_app, db
+from app.models import Role, User, Classroom, AttendanceRecord, TutorStudent, PasswordResetToken
 
-app = create_app()
+def test_tables():
+    print("Checking if tables exist in the database...")
 
-with app.app_context():
-    # Crear las tablas en la base de datos
-    db.create_all()
+    inspector = db.inspect(db.engine)
+    tables = inspector.get_table_names()
 
-    # Crear un nuevo usuario de prueba
-    test_user = User(name="Test", email="test@example.com", role="teacher")
-    db.session.add(test_user)
-    db.session.commit()
+    expected_tables = {
+        'roles',
+        'users',
+        'classrooms',
+        'attendance_records',
+        'tutor_student',
+        'password_reset_tokens'
+    }
 
-    # Consultar la base de datos
-    users = User.query.all()
-    for user in users:
-        print(f"{user.id}: {user.name} - {user.email}")
+    missing = expected_tables - set(tables)
+
+    if not missing:
+        print("✅ All expected tables are present:")
+        for table in sorted(tables):
+            print(f"  - {table}")
+    else:
+        print("❌ Missing tables:")
+        for table in missing:
+            print(f"  - {table}")
+
+if __name__ == "__main__":
+    app = create_app()
+    with app.app_context():
+        test_tables()
